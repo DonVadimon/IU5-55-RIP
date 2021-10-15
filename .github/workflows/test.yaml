@@ -11,12 +11,15 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8.12' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          python-version: '3.8.12'
       - name: requirements
         uses: BSFishy/pip-action@v1
         with:
           requirements: requirements.txt
-      - run: echo "!!!!!!!!!! lab1 requires cmd args !!!!!!!!!!"
+      - run: echo "!!!!!!!!!! lab1 !!!!!!!!!!"
+      - run: python ./lab1/main.py -A 1 -B 5 -C 6
+      - run: python ./lab1/main.py -A 2 -B 2 -C 1
+      - run: python ./lab1/main.py -A 1 -B 2 -C 1
       - run: echo "!!!!!!!!!! lab2 !!!!!!!!!!"
       - run: python ./lab2/main.py && python ./lab2/lib_test.py
       - run: echo "!!!!!!!!!! lab3 !!!!!!!!!!"
