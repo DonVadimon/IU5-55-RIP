@@ -1,0 +1,33 @@
+name: RUN LABS
+
+on: push
+
+jobs:
+  all-labs:
+    runs-on: ubuntu-latest
+    name: All labs
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+      - run: echo "!!!!!!!!!! lab1 requires cmd args !!!!!!!!!!"
+      - run: echo "!!!!!!!!!! lab2 !!!!!!!!!!"
+      - run: python ./lab2/main.py && python ./lab2/lib_test.py
+      - run: echo "!!!!!!!!!! lab3 !!!!!!!!!!"
+      - run: echo "~~~~~~~~~~ cm_timer ~~~~~~~~~~"
+      - run: python ./lab3/cm_timer.py
+      - run: echo "~~~~~~~~~~ field ~~~~~~~~~~"
+      - run: python ./lab3/field.py
+      - run: echo "~~~~~~~~~~ gen_random ~~~~~~~~~~"
+      - run: python ./lab3/gen_random.py
+      - run: echo "~~~~~~~~~~ print_result ~~~~~~~~~~"
+      - run: python ./lab3/print_result.py
+      - run: echo "~~~~~~~~~~ sort ~~~~~~~~~~"
+      - run: python ./lab3/sort.py
+      - run: echo "~~~~~~~~~~ unique ~~~~~~~~~~"
+      - run: python ./lab3/unique.py
+      - run: echo "~~~~~~~~~~ process_data ~~~~~~~~~~"
+      - run: python ./lab3/process_data.py
