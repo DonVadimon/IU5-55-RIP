@@ -11,7 +11,7 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8.' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          python-version: '3.8.12' # Version range or exact version of a Python version to use, using SemVer's version range syntax
       - run: echo "!!!!!!!!!! lab1 requires cmd args !!!!!!!!!!"
       - run: echo "!!!!!!!!!! lab2 !!!!!!!!!!"
       - run: python ./lab2/main.py && python ./lab2/lib_test.py
