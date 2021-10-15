@@ -32,6 +32,7 @@ class Unique(object):
                     self.used_elements.add(cased)
                     return current
 
+
 if __name__ == '__main__':
     data = ['a', 'A', 'b', 'B', 'a', 'A', 'b', 'B']
 

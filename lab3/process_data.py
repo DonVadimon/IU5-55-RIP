@@ -1,6 +1,7 @@
 import json
+import os
 from pathlib import Path
-import cm_timer
+from cm_timer import CmTimer
 from print_result import print_result
 from gen_random import gen_random
 
@@ -9,7 +10,7 @@ from gen_random import gen_random
 # Предполагается, что функции f1, f2, f3 будут реализованы в одну строку
 # В реализации функции f4 может быть до 3 строк
 
-path = Path('mocks', 'data_light.json')
+path = Path(os.getcwd(), 'lab3', 'mocks', 'data_light.json')
 
 
 with open(path, encoding='utf8') as f:
@@ -33,10 +34,11 @@ def f3(arg):
 
 @print_result
 def f4(arg):
-    temp = list(zip(arg, [(', зарплата '+str(el) + ' руб.') for el in list(gen_random(len(arg), 100000, 200000))]))
+    temp = list(zip(arg, [(', зарплата '+str(el) + ' руб.')
+                for el in list(gen_random(len(arg), 100000, 200000))]))
     return [(el[0]+el[1]) for el in temp]
 
 
 if __name__ == '__main__':
-    with cm_timer.CmTimer():
+    with CmTimer():
         f4(f3(f2(f1([el['job-name'] for el in data]))))

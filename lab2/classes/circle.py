@@ -2,6 +2,7 @@ from .geom_figure import GeomFigure
 from .fig_color import FigColor
 from math import pi
 
+
 class Circle(GeomFigure):
     def __init__(self, radius, color):
         self._radius = radius

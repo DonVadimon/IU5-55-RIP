@@ -12,6 +12,7 @@ def field(items, *args):
                     res[key] = item[key]
             yield res
 
+
 if __name__ == '__main__':
     goods = [
         {'title': 'Ковер', 'price': 2000, 'color': 'green'},

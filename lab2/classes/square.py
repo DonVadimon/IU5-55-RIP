@@ -1,6 +1,7 @@
 from .rectangle import Rectangle
 from .fig_color import FigColor
 
+
 class Square(Rectangle):
     def __init__(self, side, color):
         self._width = side

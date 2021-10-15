@@ -1,6 +1,6 @@
-from .classes.circle import Circle
-from .classes.rectangle import Rectangle
-from .classes.square import Square
+from classes.circle import Circle
+from classes.rectangle import Rectangle
+from classes.square import Square
 
 def main():
     rect = Rectangle(5, 5, 'синий')
