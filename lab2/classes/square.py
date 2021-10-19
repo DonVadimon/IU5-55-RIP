@@ -9,4 +9,4 @@ class Square(Rectangle):
         self._color = FigColor(color)
 
     def __repr__(self):
-        return 'Круг со стороной ' + str(self._width) + ' и цветом: ' + str(self._color._color)
+        return 'Квадрат со стороной ' + str(self._width) + ' и цветом: ' + str(self._color._color)
