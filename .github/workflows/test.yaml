@@ -37,3 +37,5 @@ jobs:
       - run: python ./lab3/unique.py
       - run: echo "~~~~~~~~~~ process_data ~~~~~~~~~~"
       - run: python ./lab3/process_data.py
+      - run: echo "!!!!!!!!!! rk1 !!!!!!!!!!"
+      - run: python ./rk1/main.py
