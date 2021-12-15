@@ -1,0 +1,17 @@
+{% extends 'inc/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <h1 class="text-center mt-4">Report Page</h1>
+</div>
+<!-- Page Content -->
+<div>
+    <img src="{% static 'img/pes_ava.png' %}" alt="#" class="card-img">
+  {% comment %} {% for q in page_obj %}
+  {% include "inc/question.html" with q=q %}
+  {% endfor %} {% endcomment %}
+
+</div>
+{% endblock content %}
