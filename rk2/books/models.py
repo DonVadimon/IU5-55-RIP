@@ -15,7 +15,8 @@ class Book (models.Model):
         BookStore,
         on_delete=models.SET_DEFAULT,
         null=True,
-        default=None
+        default=None,
+        related_name="books"
     )
 
     def __str__(self):

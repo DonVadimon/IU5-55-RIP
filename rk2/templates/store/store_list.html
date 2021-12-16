@@ -3,13 +3,7 @@
     <h1 class="text-center mt-4">All Stores</h1>
 </div>
 <!-- Page Content -->
-<div class="d-flex flex-column">
-    {% for store in stores %}
-    <div class="d-flex flex-row my-4">
-        <a href="{% url 'delete_store' store.pk %}" class="btn btn-danger"> Delete </a>
-        <a href="{% url 'update_store' store.pk %}" class="btn btn-info"> Update </a>
-        <h1 class="m-0">{{ store.name }}</h1>
-    </div>
-    {% endfor %}
+<div class="d-flex flex-wrap">
+    {% for store in stores %} {% include 'store/store_card.html' with store=store %} {% endfor %}
 </div>
 {% endblock content %}

@@ -1,7 +1,8 @@
+from django.db.models.aggregates import Avg
 from django.http.response import HttpResponse
 from django.shortcuts import get_list_or_404, get_object_or_404, redirect, render
 from .models import BookStore, Book
-from django.db.models import F
+from django.db import models
 
 
 def index(request):
@@ -24,6 +25,7 @@ def create_book(request):
         for key in request.POST:
             if key in Book.__dict__:
                 dto[key] = request.POST[key]
+        dto['store'] = get_object_or_404(BookStore, pk=request.POST['store'])
         new_book = Book(**dto)
         new_book.save()
         return redirect('read_book')
@@ -37,8 +39,11 @@ def update_book(request, book_id):
     else:
         book = get_object_or_404(Book, pk=book_id)
         for key in request.POST:
-            if key in book.__dict__:
+            if key in book.__dict__ and key != 'store':
                 setattr(book, key, request.POST[key])
+        if 'store' in request.POST:
+            setattr(book, 'store', get_object_or_404(
+                BookStore, pk=request.POST['store']))
         book.save()
         return redirect('read_book')
 
@@ -88,4 +93,9 @@ def delete_store(request, store_id):
 
 
 def report(request):
-    return render(request, 'report.html')
+    expensive_books = Book.objects.filter(cost__gt=1000)
+    avg_prices = []
+    for store in BookStore.objects.all():
+        avg_prices.append({"store": store,  "price": Book.objects.filter(
+            store=store.pk).aggregate(Avg('cost'))['cost__avg']})
+    return render(request, 'report.html', {"expensive_books": expensive_books, "avg_prices": avg_prices})

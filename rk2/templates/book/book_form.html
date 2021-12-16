@@ -18,7 +18,7 @@
 
 <div class="mb-3">
     <label for="bookStore" class="form-label">Select Store</label>
-    <select class="form-select" aria-label="Default select example" id="bookStore">
+    <select name="store" class="form-select" aria-label="Default select example" id="bookStore">
         {% for store in stores %}
         <option value="{{ store.pk }}">{{ store.name }}</option>
         {% endfor %}
