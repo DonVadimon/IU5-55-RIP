@@ -1,23 +1,13 @@
-from django.http.response import Http404, JsonResponse
-from django.core import serializers
-from django.shortcuts import render
-from django.forms.models import model_to_dict
-import json
-
-from .models import Car
-
-# Create your views here.
+from rest_framework.viewsets import ModelViewSet
+from .serializers import CarSerializer, ManufacturerSerializer
+from .models import Car, Manufacturer
 
 
-def index(req):
-    cars = list(Car.objects.all().values())
-    return JsonResponse({'cars': cars})
+class CarsViewSet(ModelViewSet):
+    queryset = Car.objects.all()
+    serializer_class = CarSerializer
 
 
-def details(req, car_id):
-    try:
-        car = list(Car.objects.filter(pk=car_id).values())[0]
-    except Car.DoesNotExist:
-        raise Http404('Car Does Not Exist')
-
-    return JsonResponse({'car': car})
+class ManufacturerViewSet(ModelViewSet):
+    queryset = Manufacturer.objects.all()
+    serializer_class = ManufacturerSerializer
