@@ -9,7 +9,7 @@ export const MainPage = () => {
     return (
         <div>
             {cars.map((car) => (
-                <CarCard key={`${car.id}`} car={car} />
+                <CarCard key={`${car.pk}`} car={car} />
             ))}
         </div>
     );

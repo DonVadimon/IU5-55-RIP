@@ -6,10 +6,8 @@ import styles from './Spinner.module.css';
 
 const cx = cnBind.bind(styles) as (...args: Argument[]) => string;
 
-export const Spinner = () => {
-    return (
-        <div className={cx('spinner')}>
-            <img src={spinner} alt="loading" />
-        </div>
-    );
-};
+export const Spinner = React.memo(() => (
+    <div className={cx('spinner')}>
+        <img src={spinner} alt="loading" />
+    </div>
+));

@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useParams } from 'react-router';
 import { useAppContext } from 'hooks/useAppContext';
 
 import { CarCard } from 'components/CarCard';
+import { CarForm } from 'components/CarForm';
 
 export const Details = () => {
-    const { id } = useParams<{ id: string }>();
+    const { pk } = useParams<{ pk: string }>();
 
-    const car = useAppContext().cars.find(({ id: _id }) => _id === Number(id));
+    const { cars } = useAppContext();
 
-    return <div>{car ? <CarCard car={car} /> : 'not found'}</div>;
+    const car = useMemo(() => cars.find(({ pk: _pk }) => _pk === Number(pk)), [cars, pk]);
+
+    return (
+        <div>
+            {car ? (
+                <div>
+                    <CarCard car={car} />
+                    <CarForm initialValues={car} pk={car.pk} />
+                </div>
+            ) : (
+                <CarForm />
+            )}
+        </div>
+    );
 };
